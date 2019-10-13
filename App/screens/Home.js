@@ -11,12 +11,20 @@ import { Header } from "../components/Header";
 
 const TEMP_LAST_CONVERTED = new Date();
 
-import { swapCurrency, changeCurrencyAmount } from "../Actions/currencies";
+import {
+  swapCurrency,
+  changeCurrencyAmount,
+  getInitialConversion
+} from "../Actions/currencies";
 
 class Home extends Component {
   static propTypes = {
     navigation: PropTypes.object
   };
+
+  componentWillMount() {
+    this.props.getInitialConversion();
+  }
 
   handleChangeText = amount => {
     this.props.dispatch(changeCurrencyAmount(amount));
@@ -39,7 +47,8 @@ class Home extends Component {
   };
 
   handleSwapCurrency = () => {
-    this.props.dispatch(swapCurrency());
+    // this.props.dispatch(swapCurrency());
+    this.props.swapCurrency();
   };
 
   handleOptionsPress = () => {
@@ -105,4 +114,14 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = dispatch => {
+  return {
+    swapCurrency: () => dispatch(swapCurrency()),
+    getInitialConversion: () => dispatch(getInitialConversion())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

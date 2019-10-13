@@ -1,0 +1,6 @@
+framework module Pods_Currency_tvOSTests {
+  umbrella header "Pods-Currency-tvOSTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
