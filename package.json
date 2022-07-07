@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "color": "^3.1.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "16.8.3",
     "react-native": "0.59.8",
     "react-native-dropdownalert": "^3.11.0",
